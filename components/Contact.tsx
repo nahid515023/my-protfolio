@@ -49,7 +49,8 @@ export default function Contact() {
       } else {
         throw new Error('Failed to send message')
       }
-    } catch (error) {
+    } catch (error: unknown) {
+      console.error('Form submission error:', error);
       setSubmitMessage({
         type: 'error',
         message: 'Oops! Something went wrong. Please try again later.'
@@ -60,22 +61,22 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="py-20 bg-gradient-to-b from-gray-50 to-white dark:from-gray-800 dark:to-gray-900">
+    <section id="contact" className="py-16 bg-gray-50 dark:bg-gray-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center">
-          <h2 className="text-4xl font-extrabold text-gray-900 dark:text-white">
+        <h2 className="text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400 sm:text-5xl animate-gradient">
             Get In Touch
           </h2>
-          <div className="mt-4 flex justify-center">
-            <div className="relative">
-              <div className="absolute inset-0 flex items-center">
-                <div className="w-24 border-t border-gray-300 dark:border-gray-700"></div>
-              </div>
-              <div className="relative flex justify-center text-sm">
-                <span className="px-2 text-gray-500 dark:text-gray-400 bg-gray-50 dark:bg-gray-800">
-                  Let's collaborate
+          <div className="relative my-8">
+            <div className="absolute inset-0 flex items-center">
+              <div className="w-full border-t border-gray-200 dark:border-gray-700"></div>
+            </div>
+            <div className="relative flex justify-center">
+              <span className="px-4 py-2 text-lg font-medium text-gray-600 dark:text-gray-300 bg-white dark:bg-gray-800 rounded-full shadow-sm border border-gray-200 dark:border-gray-700 hover:border-indigo-500 dark:hover:border-indigo-400 transition-colors duration-300">
+                <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 dark:from-blue-400 dark:via-indigo-400 dark:to-purple-400 bg-clip-text text-transparent animate-gradient">
+                  Let&apos;s collaborate
                 </span>
-              </div>
+              </span>
             </div>
           </div>
           <p className="mt-4 max-w-2xl mx-auto text-xl text-gray-600 dark:text-gray-300">
@@ -120,7 +121,7 @@ export default function Contact() {
                   </div>
                   <div className="ml-4">
                     <p className="text-sm font-medium text-gray-900 dark:text-white">Location</p>
-                    <p className="text-base text-gray-600 dark:text-gray-300">Dhaka, Bangladesh</p>
+                    <p className="text-base text-indigo-600 dark:text-indigo-400">Dhaka, Bangladesh</p>
                   </div>
                 </div>
               </div>
@@ -129,7 +130,7 @@ export default function Contact() {
                 <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Connect with me</h4>
                 <div className="flex space-x-6">
                   <a 
-                    href="https://github.com/nahid-hasan-noyon" 
+                    href="https://github.com/nahid515023" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transform hover:scale-110 transition-all duration-300 hover:rotate-6"
@@ -137,7 +138,7 @@ export default function Contact() {
                     <FaGithub size={28} />
                   </a>
                   <a 
-                    href="https://www.linkedin.com/in/md-nahid-hasan-noyon/" 
+                    href="https://www.linkedin.com/in/nahid36/" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transform hover:scale-110 transition-all duration-300 hover:-rotate-6"

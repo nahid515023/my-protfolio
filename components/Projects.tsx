@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { FaGithub, FaExternalLinkAlt, FaCode } from 'react-icons/fa';
+import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
@@ -72,10 +72,11 @@ export default function Projects() {
 
   useEffect(() => {
     // Smooth scroll setup
-    const smoothScroll = (e: any) => {
-      if (e.target.hash) {
+    const smoothScroll = (e: Event) => {
+      const target = e.currentTarget as HTMLAnchorElement;
+      if (target.hash) {
         e.preventDefault();
-        const element = document.querySelector(e.target.hash);
+        const element = document.querySelector((e.target as HTMLAnchorElement).hash);
         if (element) {
           element.scrollIntoView({
             behavior: 'smooth',
@@ -134,17 +135,13 @@ export default function Projects() {
   };
 
   return (
-    <motion.section
-      id="projects"
-      ref={ref}
-      initial="hidden"
-      animate={inView ? "visible" : "hidden"}
-      variants={containerVariants}
-      className="py-20 bg-gradient-to-b from-gray-50 to-white dark:from-gray-800 dark:to-gray-900 scroll-mt-20"
-    >
+    <section id="projects" className="py-16 bg-gray-50 dark:bg-gray-900">
       <motion.div 
-        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+        ref={ref}
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10"
         variants={itemVariants}
+        initial="hidden"
+        animate={inView ? "visible" : "hidden"}
       >
         <motion.div 
           className="text-center mb-16"
@@ -252,6 +249,6 @@ export default function Projects() {
           ))}
         </motion.div>
       </motion.div>
-    </motion.section>
+    </section>
   );
 }
